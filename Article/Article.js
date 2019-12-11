@@ -112,3 +112,70 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+let createComponent = function (title, date, parag1, parag2, parag3) {
+  // creating elements
+
+let theArticle = document.createElement('div');
+let theTitle = document.createElement('h2');
+let theDate = document.createElement('p');
+let paragraphOne = document.createElement('p');
+let paragraphTwo = document.createElement('p');
+let paragraphTree = document.createElement('p');
+
+// the three paragraph elements to be inserted here
+
+let theButton = document.createElement('span');
+
+// Adding attributes
+theArticle.classList.add('article');
+theDate.classList.add('date');
+theButton.classList.add('expandButton');
+
+// setting up structure
+theArticle.apendChild(theTitle);
+theArticle.appendChild(theDate);
+theArticle.appendChild(theButton);
+theArticle.appendChild(paragraphOne);
+theArticle.appendChild(paragraphTwo);
+theArticle.appendChild(paragraphTree);
+theArticle.appendChild(theButton);  
+
+// adding content
+  
+  theTitle.textContent = title;
+  theDate.textContent = date;
+  paragraphOne.textContent = parag1;
+  paragraphTwo.textContent = parag2;
+  paragraphTree.textContent = parag3;
+
+
+  const open = '\u25bc';
+  const close = '\u25b2';
+  
+  theButton.textContent = open;
+
+  // adding event listener to expandButton span
+  theButton.add('click', (event) => {
+    buttonOpen.classList.toggle('article-open');
+    buttonClose.classList.toggle('article-open');
+    // panelContent.classList.toggle('toggle-on');
+  });
+  return theArticle;
+}
+
+let articleRoute = document.querySelector('body .header h1');
+
+// maping over the data creating a new article
+
+data.forEach((element) => {
+  articleRoute = appendChild(reateComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+});
+
+
+
+
+
+
+
+
