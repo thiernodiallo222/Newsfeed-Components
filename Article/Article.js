@@ -85,6 +85,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Thierno Diallo',
+    date: 'December 12, 2019',
+    firstParagraph: `Hello there. this is my own paragraph. I am going to complete it by a lorem 
+    lorem dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+      secondParagraph:`this is the second paragraph dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+    thirdParagraph:`This is the third paragraph. dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`
   }
 ];
 
@@ -129,16 +152,16 @@ let paragraphTree = document.createElement('p');
 // the three paragraph elements to be inserted here
 let theButton = document.createElement('span');
 
-// Adding attributes
+// Adding  css classes
 theArticle.classList.add('article');
 theDate.classList.add('date');
 theButton.classList.add('expandButton');
+  
 
 // setting up structure
 theArticle.appendChild(theTitle);
 theArticle.appendChild(theDate);
 theArticle.appendChild(theButton);
-  
 theArticle.appendChild(paragraphOne);
 theArticle.appendChild(paragraphTwo);
 theArticle.appendChild(paragraphTree);
@@ -156,21 +179,21 @@ theArticle.appendChild(paragraphTree);
   
   theButton.textContent = open;
 
-  // adding event listener to expandButton span
-    theButton.addEventListener('click',() => {
-    theButton.classList.toggle('article-open');
-    theButton.classList.toggle('article-open');
-    theArticle.classList.toggle('toggle-on');
+  theButton.addEventListener('click',(event) => {
+    event.target.parentElement.classList.toggle("article-open");
+    //  theArticle.classList.toggle("article-open");   also works
   });
+
+
   return theArticle;
 }
 
-let articleRoute = document.querySelector('.articles');
+let route = document.querySelector('.articles');
 
 // maping over the data creating a new article
 
-data.forEach((element) => {
-  articleRoute.appendChild(createComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+data.map((element) => {
+  return route.appendChild(createComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
 });
 
 

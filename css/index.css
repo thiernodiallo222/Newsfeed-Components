@@ -83,3 +83,7 @@ body {
   font-family: 'Roboto';
   background-color: #fffef7;
 }
+html .article-open,
+body .article-open {
+  display: block;
+}
