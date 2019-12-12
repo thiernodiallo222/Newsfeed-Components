@@ -113,7 +113,11 @@ const data = [
 
 */
 
-let createComponent = function (title, date, parag1, parag2, parag3) {
+let createComponent = function (title,
+                               date,
+                               firstParagraph,
+                               secondParagraph,
+                               thirdParagraph){
   // creating elements
 
 let theArticle = document.createElement('div');
@@ -122,9 +126,7 @@ let theDate = document.createElement('p');
 let paragraphOne = document.createElement('p');
 let paragraphTwo = document.createElement('p');
 let paragraphTree = document.createElement('p');
-
 // the three paragraph elements to be inserted here
-
 let theButton = document.createElement('span');
 
 // Adding attributes
@@ -133,47 +135,46 @@ theDate.classList.add('date');
 theButton.classList.add('expandButton');
 
 // setting up structure
-theArticle.apendChild(theTitle);
+theArticle.appendChild(theTitle);
 theArticle.appendChild(theDate);
 theArticle.appendChild(theButton);
+  
 theArticle.appendChild(paragraphOne);
 theArticle.appendChild(paragraphTwo);
 theArticle.appendChild(paragraphTree);
-theArticle.appendChild(theButton);  
 
-// adding content
   
   theTitle.textContent = title;
   theDate.textContent = date;
-  paragraphOne.textContent = parag1;
-  paragraphTwo.textContent = parag2;
-  paragraphTree.textContent = parag3;
+  paragraphOne.textContent = firstParagraph;
+  paragraphTwo.textContent = secondParagraph;
+  paragraphTree.textContent = thirdParagraph;
 
 
   const open = '\u25bc';
-  const close = '\u25b2';
+  // const close = '\u25b2';
   
   theButton.textContent = open;
 
   // adding event listener to expandButton span
-  theButton.add('click', (event) => {
-    buttonOpen.classList.toggle('article-open');
-    buttonClose.classList.toggle('article-open');
-    // panelContent.classList.toggle('toggle-on');
+    theButton.addEventListener('click',() => {
+    theButton.classList.toggle('article-open');
+    theButton.classList.toggle('article-open');
+    theArticle.classList.toggle('toggle-on');
   });
   return theArticle;
 }
 
-let articleRoute = document.querySelector('body .header h1');
+let articleRoute = document.querySelector('.articles');
 
 // maping over the data creating a new article
 
 data.forEach((element) => {
-  articleRoute = appendChild(reateComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+  articleRoute.appendChild(createComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
 });
 
 
-
+// let createComponent = function (title, date, parag1, parag2, parag3) {
 
 
 
