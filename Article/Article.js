@@ -136,11 +136,7 @@ const data = [
 
 */
 
-let createComponent = function (title,
-                               date,
-                               firstParagraph,
-                               secondParagraph,
-                               thirdParagraph){
+let createComponent = function (myObject){
   // creating elements
 
 let theArticle = document.createElement('div');
@@ -167,11 +163,11 @@ theArticle.appendChild(paragraphTwo);
 theArticle.appendChild(paragraphTree);
 
   
-  theTitle.textContent = title;
-  theDate.textContent = date;
-  paragraphOne.textContent = firstParagraph;
-  paragraphTwo.textContent = secondParagraph;
-  paragraphTree.textContent = thirdParagraph;
+  theTitle.textContent = myObject.title;
+  theDate.textContent = myObject.date;
+  paragraphOne.textContent = myObject.firstParagraph;
+  paragraphTwo.textContent = myObject.secondParagraph;
+  paragraphTree.textContent = myObject.thirdParagraph;
 
 
   const open = '\u25bc';
@@ -193,7 +189,7 @@ let route = document.querySelector('.articles');
 // maping over the data creating a new article
 
 data.map((element) => {
-  return route.appendChild(createComponent(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph));
+  return route.appendChild(createComponent(element));
 });
 
 
