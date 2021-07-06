@@ -85,6 +85,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Thierno Diallo',
+    date: 'December 12, 2019',
+    firstParagraph: `Hello there. this is my own paragraph. I am going to complete it by a lorem 
+    lorem dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+      secondParagraph:`this is the second paragraph dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+    thirdParagraph:`This is the third paragraph. dolor sit amet, consectetur adipiscing
+        elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`
   }
 ];
 
@@ -112,3 +135,67 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+let createComponent = function (myObject){
+  // creating elements
+
+let theArticle = document.createElement('div');
+let theTitle = document.createElement('h2');
+let theDate = document.createElement('p');
+let paragraphOne = document.createElement('p');
+let paragraphTwo = document.createElement('p');
+let paragraphTree = document.createElement('p');
+// the three paragraph elements to be inserted here
+let theButton = document.createElement('span');
+
+// Adding  css classes
+theArticle.classList.add('article');
+theDate.classList.add('date');
+theButton.classList.add('expandButton');
+  
+
+// setting up structure
+theArticle.appendChild(theTitle);
+theArticle.appendChild(theDate);
+theArticle.appendChild(theButton);
+theArticle.appendChild(paragraphOne);
+theArticle.appendChild(paragraphTwo);
+theArticle.appendChild(paragraphTree);
+
+  
+  theTitle.textContent = myObject.title;
+  theDate.textContent = myObject.date;
+  paragraphOne.textContent = myObject.firstParagraph;
+  paragraphTwo.textContent = myObject.secondParagraph;
+  paragraphTree.textContent = myObject.thirdParagraph;
+
+
+  const open = '\u25bc';
+  // const close = '\u25b2';
+  
+  theButton.textContent = open;
+
+  theButton.addEventListener('click',(event) => {
+    event.target.parentElement.classList.toggle("article-open");
+    //  theArticle.classList.toggle("article-open");   also works
+  });
+
+
+  return theArticle;
+}
+
+let route = document.querySelector('.articles');
+
+// maping over the data creating a new article
+
+data.map((element) => {
+  return route.appendChild(createComponent(element));
+});
+
+
+// let createComponent = function (title, date, parag1, parag2, parag3) {
+
+
+
+
+
